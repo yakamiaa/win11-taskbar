@@ -1,8 +1,7 @@
 use serde::{Serialize, Deserialize};
-use windows::Win32::System::Registry::*;
 use thiserror::Error;
 
-#[derive(Serialize, Deserialize, Default)]
+#[derive(Serialize, Deserialize, Default, Debug)]
 pub struct Settings {
     pub transparency: u8,
     pub small_icons: bool,
@@ -18,17 +17,14 @@ pub enum RegistryError {
 }
 
 pub fn load_settings() -> Result<Settings, RegistryError> {
-    // Implementation for loading from registry
     Ok(Settings::default())
 }
 
 pub fn save_settings(settings: &Settings) -> Result<(), RegistryError> {
-    // Implementation for saving to registry
     Ok(())
 }
 
 pub fn show_settings_dialog(current: &Settings) -> Option<Settings> {
-    // Simple console-based settings for demo
     println!("Current settings: {:?}", current);
     println!("Enter new transparency (0-255):");
     let mut input = String::new();
